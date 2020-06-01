@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Deployment of Loan approval using Machine Learning.</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head><center>
+
+   <body style='margin-top:10;margin-left:10;margin-right:10;' bgcolor="#f6e9d6">
+    <h> <font size="+2">Deployment of Loan approval using Machine Learning</font> </h> </center>
+    <button onclick="window.location.href='http://127.0.0.1:5000/apidocs';">
+      A.P.I.
+    </button>
+  <p>  Hello World! I started studing machine learning few months back and along side with learning about models
+    and fitting and training them, I also started looking for other technologies to keep the fun element
+    going. I came across the term "A.P.I." and wanted to learn more about it. To be honest I still
+    don't understand the standard defination of it, what I know is this is how two apps or services talks to
+    each other and exchange information. </p>
+    <p> Next thing which I always facinated about from watching all those sci-fci and tech movies was using a 
+    powerful computer remotely using a terminal. So I learned AWS on which this model is deployed. So
+   lets get started.</p>
+  <p>Note: The aim was to learn to make web app and deploy on a server. Model's accuracy or other metrics 
+     are not tunned.
+  </p>
+  
+    <h3>Data Summary</h3>
+  <center>
+    <table width="400" border="1"> 
+      <tr>
+         <td bgcolor="#93aa91">Columns</td>
+         <td bgcolor="#93aa91">Desription</td>
+      </tr>
+      <tr>
+         <td >Married</td>
+         <td>0 - Not Married, 1 - Married</td>
+      </tr>
+      <tr>
+         <td>Education</td>
+         <td>0 - Not Graduate, 1 - Graduate</td>
+      </tr>
+      <tr>
+        <td>Credit History</td>
+        <td>0 - if any debt, 1 - No  debt</td>
+     </tr>
+     <tr>
+      <td>Income</td>
+      <td>0 - Low, 1 - Medium, 2 - High</td>
+   </tr>
+   </table>
+  </center>
+<h3>Modeling</h3>
+<p> Logistic Regression was used to train and test the model.</p>
+<p>Here is the classification report.</p>
+
+<center>
+<pre>
+precision    recall  f1-score   support
+
+0       0.88      0.41      0.56        37
+1       0.74      0.97      0.84        66
+
+accuracy                            0.77       103
+macro avg       0.81      0.69      0.70       103
+weighted avg    0.79      0.77      0.74       103
+</pre>
+</center>
+
+<p> After train the model it was converted to a pickle file(pkl) by using pickle library to transfer
+   it and use in api file to test the data. </p>
+
+
+<h3>A.P.I. and Webapp</h3>
+<p>I build the A.P.I. using <a href="https://www.flaskapi.org/" > flask </a>  library. In the return of
+    <code>if __name__ == "__main__"</code> write <code>app.run(port=8080, host = "0.0.0.0")</code>
+</p>   
+<p> And to build webpage, which was the most difficult task as you can guess by this homepage
+ as I don't know much of web development. But I found an awesome and really easy to use library
+  <a href="https://github.com/flasgger/flasgger"> flasgger</a>.
+ This will directly build an web page for you just by entering proper docstring in the post and request functions you will be using.
+ Format for the docstring is provided in the documentation of the library.
+</p>
+<h3> Deployment </h3>
+<p> After sign in to AWS it will provide Free Tier plan. The only service used here is EC2 instance which stands for 
+   Elastic Computing which is basically a cloud computer where you will run the python file which contains flask and flasgger.
+   After signing in, go to your aws console and initiate EC2 instance, the free tier version has low specs but it was enough
+      for beginner like me.</p>
+   <p> I choose Ubuntu to run on my instance as I am familiar with the terminal commands. Make a requirement.txt file with all the 
+required libraries' name and version written in it. So after booting the EC2 instance you connect to it using putty, I use
+linux so I could connect directly via my terminal using a ssh command with the pem file which will be provided while setting
+the instance. To transfer the code/files from you local machine to aws putty gen and filezilla can be used.</p>
+ <p>After file transfer run <code> sudo apt update </code> followed by <code> sudo apt upgrade</code>. This will update repositories
+    and preinstalled software. Python will come preinstalled, but if not you can install the appropriate version using 
+    <code> sudo apt install python3</code>. Once that is done it's now time to install required libraries, but first
+    install pip3 using <code>sudo apt install python3-pip</code> followed by <code>pip install requirement.txt</code> (if you are
+    not in the same directory as requirement.txt, you need to give the full path or can navigate to that directory using
+    <code>cd foldername</code>).
+</p>
+<p>Once everything is set, run <code>python app.py</code>
+</p>
+
+<h3>Reference</h3>
+<p><a href="https://github.com/hchaudhari73/flask"> Compelete code </a> </p>
+<p><a href="https://www.linkedin.com/in/harshal-chaudhari-a21009b0/" >LinkedIn</a></p>
+</body>
+</html>
