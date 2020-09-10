@@ -11,7 +11,7 @@
 <h4> Content </h4>  
 <p> Salary Prediction </br>- Simple modelling </br> - Basic Frontend </p>
 <p> Loan Prediction </br>- Simple modelling </br> - Flasgger Frontend  </br> 
-<a href="http://ec2-13-232-167-70.ap-south-1.compute.amazonaws.com:8080/"> - This is made live using AWS.</a>
+<a href="http://ec2-13-232-167-70.ap-south-1.compute.amazonaws.com:8080/"> - This is made live using AWS!</a>
  </p>
 
 <h6> Level </br> -- Intermediate </h6> 
